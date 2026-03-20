@@ -17,8 +17,8 @@ Shared PM workflow automations. Each skill is a self-contained module invoked as
 
 Each skill directory contains:
 - `SKILL.md` -- Defines the skill's purpose, trigger phrases, input/output format, and execution rules
-- `.skill` file (optional) -- Packaged skill archive
-- `References/` or `references/` (optional) -- Reference PDFs or examples used by the skill
+- `.skill` file (optional) -- Packaged skill archive for distribution
+- `references/` (optional) -- Reference PDFs or examples used by the skill (always lowercase)
 
 ## Core Design Principles
 

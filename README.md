@@ -1,41 +1,152 @@
 # Claude Code Toolkit
 
-Custom skills, agents, and commands built for [Claude Code](https://claude.ai/code) — extending it into a PM operating system.
+A collection of custom **skills**, **agents**, and **commands** for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — turning it into a full-fledged PM operating system for product managers, especially those working in Customer Success Management (CSM).
+
+## The Problem
+
+Product managers repeat the same workflows daily — writing epics, drafting stories, prepping meetings, sending team updates, analyzing competitors, reviewing PRDs. Each one follows a predictable structure, but doing it from scratch every time burns time and mental energy.
+
+## What This Toolkit Does
+
+This toolkit packages those repeatable PM workflows into reusable Claude Code components:
+
+- **Skills** — slash-command automations that take rough input and produce polished, structured output in one shot. No clarifying questions, no back-and-forth. You type `/epic-creator`, paste your context, and get a complete epic with acceptance criteria.
+- **Agents** — multi-turn specialists with persistent memory. They accumulate domain knowledge across conversations and deliver deep strategic analysis (competitive intelligence, PRD risk review).
+- **Commands** — quick-trigger utilities for common actions like committing code, initializing project docs, or opening dashboards.
+
+Everything follows a **zero-questions, full-execution** philosophy: read the input, make reasonable assumptions, produce complete output. The user refines afterward — not before.
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| **doc-refiner** | Refine and restructure markdown documents |
-| **epic-creator** | Create structured product epics with acceptance criteria |
-| **story-creator** | Create user stories with acceptance criteria |
-| **meeting-prep** | Generate meeting agendas and subject lines |
-| **linkedin-post** | Draft LinkedIn posts in authentic voice |
-| **team-message** | Convert rough thoughts into professional team messages |
+Single-shot workflow automations invoked as slash commands.
+
+| Skill | Command | What It Does |
+|-------|---------|--------------|
+| **epic-creator** | `/epic-creator` | Creates structured product epics with Subject, Description, and detailed Acceptance Criteria (10 subsections including personas, functional details, telemetry, and customer outcomes) |
+| **story-creator** | `/story-creator` | Creates user stories with Short Description, Description, and Acceptance Criteria (General AC + User Interaction narrative) |
+| **doc-refiner** | `/doc-refiner` | Refines and restructures messy markdown — adds TL;DR, logical headings, deduplication, grammar fixes while preserving the author's voice |
+| **meeting-prep** | `/meeting-prep` | Generates a concise meeting subject line and a prioritized agenda table from free-form input |
+| **linkedin-post** | `/linkedin-post` | Drafts LinkedIn posts in a specific authentic voice with a proven 5-part structure (hook, problem, solution, impact, closing) |
+| **team-message** | `/team-message` | Converts rough, unstructured thoughts into clear, professional messages ready to paste into Teams or Slack |
 
 ## Agents
 
-| Agent | Description |
-|-------|-------------|
-| **competitive-strategic-lens** | Competitive intelligence analysis for product decisions |
-| **prd-edge-case-analyzer** | Review PRDs for edge cases, risks, and gaps |
+Stateful specialists with persistent memory, invoked via `/task`.
+
+| Agent | What It Does |
+|-------|--------------|
+| **competitive-strategic-lens** | Full competitive intelligence analysis — feature comparison across 15+ competitors (Gainsight, Totango, Salesforce, etc.), differentiation scoring, moat assessment, AI disruption threat analysis, and a strategic build/don't-build verdict |
+| **prd-edge-case-analyzer** | Reviews PRDs across 10 dimensions (user edge cases, data/input boundaries, state/flow issues, security risks, performance, business logic, error handling, operational risks, and more) with CSM-specific scenario coverage |
+
+Agents remember insights across conversations. The competitive lens accumulates market intelligence; the PRD analyzer learns recurring risk patterns in your product area.
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| **commit-push** | Commit all changes and push to remote |
-| **claude-md-init-all** | Update all CLAUDE.md files across a repo |
-| **refresh-portfolio** | Refresh portfolio pages with latest content |
-| **linkedin-post** | Quick-trigger for the LinkedIn post skill |
-| **meeting-prep** | Quick-trigger for meeting prep |
-| **flip-a-coin** | Flip a coin (because why not) |
+Immediate-execution utilities.
 
-## How to use
+| Command | What It Does |
+|---------|--------------|
+| **commit-push** | Stages, commits, and pushes all changes — auto-generates commit message, excludes secrets |
+| **claude-md-init-all** | Creates or updates `CLAUDE.md` context files across an entire repository |
+| **refresh-portfolio** | Refreshes portfolio HTML pages with latest content from source files |
+| **linkedin-post** | Quick-trigger wrapper for the LinkedIn post skill |
+| **open-portfolio** | Starts the portfolio server and opens it in browser |
+| **open-ironman** | Opens the Ironman 70.3 Training Tracker app |
+| **flip-a-coin** | Flips a coin. Sometimes you just need one. |
 
-1. Clone this repo for reference
-2. Copy skills to your project or `~/.claude/` directory
-3. Copy agents to `~/.claude/agents/`
-4. Copy commands to `~/.claude/commands/`
+## Project Structure
 
-Each skill has a `SKILL.md` with detailed usage instructions.
+```
+claude-code-toolkit/
+├── CLAUDE.md                          # Root context — conventions, naming rules
+├── README.md
+├── skills/                            # Slash-command automations
+│   ├── CLAUDE.md                      # Skills system documentation
+│   ├── doc-refiner/
+│   │   └── SKILL.md
+│   ├── epic-creator/
+│   │   ├── SKILL.md
+│   │   └── references/                # Domain reference PDFs
+│   ├── story-creator/
+│   │   ├── SKILL.md
+│   │   └── references/
+│   ├── meeting-prep/
+│   │   └── SKILL.md
+│   ├── linkedin-post/
+│   │   └── SKILL.md
+│   └── team-message/
+│       └── SKILL.md
+├── agents/                            # Multi-turn specialists with memory
+│   ├── CLAUDE.md                      # Agents system documentation
+│   ├── competitive-strategic-lens.md
+│   └── prd-edge-case-analyzer.md
+└── commands/                          # Quick-trigger actions
+    ├── CLAUDE.md                      # Commands system documentation
+    ├── commit-push.md
+    ├── claude-md-init-all.md
+    ├── refresh-portfolio.md
+    ├── linkedin-post.md
+    ├── open-portfolio.md
+    ├── open-ironman.md
+    └── flip-a-coin.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and configured
+
+### Installation
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/lampiiii/claude-code-toolkit.git
+   ```
+
+2. **Copy components to your Claude Code config**
+   ```bash
+   # Skills — copy to your project or global config
+   cp -r skills/* ~/.claude/skills/
+
+   # Agents
+   cp agents/*.md ~/.claude/agents/
+
+   # Commands
+   cp commands/*.md ~/.claude/commands/
+   ```
+
+3. **Start using them**
+   ```
+   /epic-creator Build a health score dashboard that shows CSM portfolio risk at a glance
+   /meeting-prep Discuss API delay with eng, QA timeline, release readiness
+   /team-message Hey need to tell Raj about the renewal forecast bug and ask about the timeline
+   ```
+
+## Design Principles
+
+| Principle | What It Means |
+|-----------|---------------|
+| **Zero questions** | Skills never ask clarifying questions. They assume, draft, and let you refine. |
+| **Full execution** | Every invocation produces complete, usable output — not outlines or placeholders. |
+| **Domain-native** | Optimized for CSM product development — personas, workflows, and terminology are baked in. |
+| **Persistent intelligence** | Agents accumulate knowledge across conversations via persistent memory. |
+| **Convention over configuration** | Consistent structure (kebab-case naming, YAML frontmatter, `SKILL.md` per skill) makes extending the toolkit predictable. |
+
+## Creating Your Own
+
+### New Skill
+```bash
+mkdir skills/your-skill-name
+```
+Create `skills/your-skill-name/SKILL.md` with YAML frontmatter (`name`, `description`) and execution rules. Add a `references/` folder if the skill needs domain context.
+
+### New Agent
+Create `agents/your-agent-name.md` with YAML frontmatter (`name`, `description`, `model`, `color`, `memory`) and the agent's full system prompt.
+
+### New Command
+Create `commands/your-command-name.md` with step-by-step execution instructions.
+
+## License
+
+MIT
