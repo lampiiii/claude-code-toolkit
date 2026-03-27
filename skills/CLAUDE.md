@@ -12,13 +12,14 @@ Shared PM workflow automations. Each skill is a self-contained module invoked as
 | `meeting-prep` | `/meeting-prep` | Generate meeting subject line and structured, prioritized agenda |
 | `linkedin-post` | `/linkedin-post` | Write high-engagement LinkedIn posts in Abhay's authentic voice and proven format |
 | `team-message` | `/team-message` | Convert rough thoughts into clear, professional team messages for Teams/Slack/email |
+| `sync-features` | `/sync-features` | Sync CSM feature docs from workspace to company GitHub repo for engineering team |
 
 ## Skill Structure
 
 Each skill directory contains:
 - `SKILL.md` -- Defines the skill's purpose, trigger phrases, input/output format, and execution rules
-- `.skill` file (optional) -- Packaged skill archive for distribution
-- `references/` (optional) -- Reference PDFs or examples used by the skill (always lowercase)
+- `.skill` file (optional) -- Packaged skill archive
+- `References/` or `references/` (optional) -- Reference PDFs or examples used by the skill
 
 ## Core Design Principles
 

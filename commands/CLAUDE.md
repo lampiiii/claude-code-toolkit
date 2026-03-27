@@ -11,8 +11,10 @@ Quick-trigger actions that execute immediately without user input. Each command 
 | `refresh-portfolio` | Refresh portfolio pages with latest content |
 | `linkedin-post` | Quick-trigger for the LinkedIn post skill |
 | `flip-a-coin` | Flip a coin |
-| `open-portfolio` | Open PM Workspace portfolio in browser |
+| `open-velyo` | Open Velyo (PM Workspace) in the browser |
 | `open-ironman` | Open Ironman 70.3 Training Tracker |
+| `sync-pov` | Sync proof of value page to portfolio repo |
+| `update-activity-log` | Update Claude Code activity log with session entries |
 
 ## Command Structure
 
@@ -26,8 +28,10 @@ commands/
 ├── flip-a-coin.md
 ├── linkedin-post.md
 ├── open-ironman.md
-├── open-portfolio.md
-└── refresh-portfolio.md
+├── open-velyo.md
+├── refresh-portfolio.md
+├── sync-pov.md
+└── update-activity-log.md
 ```
 
 ## Conventions

@@ -28,6 +28,7 @@ Single-shot workflow automations invoked as slash commands.
 | **meeting-prep** | `/meeting-prep` | Generates a concise meeting subject line and a prioritized agenda table from free-form input |
 | **linkedin-post** | `/linkedin-post` | Drafts LinkedIn posts in a specific authentic voice with a proven 5-part structure (hook, problem, solution, impact, closing) |
 | **team-message** | `/team-message` | Converts rough, unstructured thoughts into clear, professional messages ready to paste into Teams or Slack |
+| **sync-features** | `/sync-features` | Syncs CSM feature docs from workspace to company GitHub repo for engineering team |
 
 ## Agents
 
@@ -37,6 +38,7 @@ Stateful specialists with persistent memory, invoked via `/task`.
 |-------|--------------|
 | **competitive-strategic-lens** | Full competitive intelligence analysis — feature comparison across 15+ competitors (Gainsight, Totango, Salesforce, etc.), differentiation scoring, moat assessment, AI disruption threat analysis, and a strategic build/don't-build verdict |
 | **prd-edge-case-analyzer** | Reviews PRDs across 10 dimensions (user edge cases, data/input boundaries, state/flow issues, security risks, performance, business logic, error handling, operational risks, and more) with CSM-specific scenario coverage |
+| **persona-drip** | Generates daily B2B persona immersion scenarios — vivid, realistic slices of a CSM's workday with play-by-play, invisible friction points, and PM takeaways. Rotates across 6 categories and 4 segments. |
 
 Agents remember insights across conversations. The competitive lens accumulates market intelligence; the PRD analyzer learns recurring risk patterns in your product area.
 
@@ -50,8 +52,10 @@ Immediate-execution utilities.
 | **claude-md-init-all** | Creates or updates `CLAUDE.md` context files across an entire repository |
 | **refresh-portfolio** | Refreshes portfolio HTML pages with latest content from source files |
 | **linkedin-post** | Quick-trigger wrapper for the LinkedIn post skill |
-| **open-portfolio** | Starts the portfolio server and opens it in browser |
+| **open-velyo** | Opens the Velyo PM Workspace in browser (starts server if needed) |
 | **open-ironman** | Opens the Ironman 70.3 Training Tracker app |
+| **sync-pov** | Syncs the proof of value page to the portfolio repo |
+| **update-activity-log** | Updates the Claude Code activity log with session entries |
 | **flip-a-coin** | Flips a coin. Sometimes you just need one. |
 
 ## Project Structure
@@ -74,20 +78,25 @@ claude-code-toolkit/
 │   │   └── SKILL.md
 │   ├── linkedin-post/
 │   │   └── SKILL.md
-│   └── team-message/
+│   ├── team-message/
+│   │   └── SKILL.md
+│   └── sync-features/
 │       └── SKILL.md
 ├── agents/                            # Multi-turn specialists with memory
 │   ├── CLAUDE.md                      # Agents system documentation
 │   ├── competitive-strategic-lens.md
-│   └── prd-edge-case-analyzer.md
+│   ├── prd-edge-case-analyzer.md
+│   └── persona-drip.md
 └── commands/                          # Quick-trigger actions
     ├── CLAUDE.md                      # Commands system documentation
     ├── commit-push.md
     ├── claude-md-init-all.md
     ├── refresh-portfolio.md
     ├── linkedin-post.md
-    ├── open-portfolio.md
+    ├── open-velyo.md
     ├── open-ironman.md
+    ├── sync-pov.md
+    ├── update-activity-log.md
     └── flip-a-coin.md
 ```
 

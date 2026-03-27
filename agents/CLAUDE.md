@@ -8,6 +8,7 @@ Stateful, multi-turn specialist analysts invoked via the `/task` command. Each a
 |-------|--------------|---------|
 | `competitive-strategic-lens` | `/task competitive-strategic-lens` | Competitive intelligence analysis for CSM product decisions |
 | `prd-edge-case-analyzer` | `/task prd-edge-case-analyzer` | Review PRDs for edge cases, risks, and gaps before engineering handoff |
+| `persona-drip` | `/task persona-drip` | Generate daily B2B persona immersion scenarios for empathy building |
 
 ## Agent Structure
 
